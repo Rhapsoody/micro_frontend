@@ -12,7 +12,13 @@ test('The component card renders a welcome message for the specified user', () =
     const userNameTest = "Paul" 
     const { getByTestId } = render(<Card userName={userNameTest} />);
     const welcomeMessage = getByTestId('welcome-message');
-
     expect(welcomeMessage).not.toBeNull();
     expect(welcomeMessage.textContent).toContain(`Bienvenue ${userNameTest}`);
+});
+
+test('Test card component', () => {
+    const userNameTest = "Paul" 
+    const { queryAllByText } = render(<Card userName={userNameTest} />);
+    const welcomeMessages = queryAllByText(`Bienvenue ${userNameTest}`);
+    expect(welcomeMessages.length).toBeGreaterThan(0);
 });
