@@ -16,6 +16,7 @@ test('The component card renders a welcome message for the specified user', () =
     expect(welcomeMessage.textContent).toContain(`Bienvenue ${userNameTest}`);
 });
 
+// same test with different approch
 test('Test card component', () => {
     const userNameTest = "Paul" 
     const { queryAllByText } = render(<Card userName={userNameTest} />);

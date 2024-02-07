@@ -1,27 +1,24 @@
 import React from 'react';
-import Header from '../../sharedComponent/src/header'
+import Header from '../../sharedComponent/src/header';
+import Footer from '../../sharedComponent/src/footer';
 import FetchData from './components/pokemonData';
-
- 
-const RemoteButton = React.lazy(() => import('remote/Button'));
+import styles from './styles.module.css';
 
 const App = () => {
-
-  
-
-  return(
-    <div>
-    <Header name="Host"/>
-    <h1>Basic Host-Remote</h1>
-    <h2>Host</h2>
-    <React.Suspense fallback="Loading Button">
-      <RemoteButton />
-    </React.Suspense>
-
-    <h2>Pokemon Data on landing Page</h2>
-    <FetchData />
-  </div>
-  
-  )
-}
+  return (
+    <div className={styles.root}>
+      <Header name="Host" />
+      <div className={styles.landingContainer}>
+        <div className={styles.landingContent}>
+          <h2 className={styles.title}>Pokemon Data on landing Page</h2>
+          <div>
+            <p className={styles.description}>Retrouvez votre pokédex miniature préféré !</p>
+          </div>
+        </div>
+      <FetchData />
+      </div>
+      <Footer />
+    </div>
+  );
+};
 export default App;

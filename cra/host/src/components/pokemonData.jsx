@@ -1,5 +1,6 @@
 import React ,{ useState }from 'react';
 import { pokeData } from '../service/pokeservice';
+import styles from '../styles.module.css';
 
 const FetchData = () => {
     const [pokemonName, setPokemonName] = useState('');
@@ -9,31 +10,44 @@ const FetchData = () => {
     const handleSearchOnChange = (event) => {
       setPokemonName(event.target.value);
     }
-
-    const handleSearch = () => {
+    
+    const handleSearch = async() => {
       event.preventDefault();
       try{
-       const currentData = pokeData(pokemonName);
-        console.log(currentData);
-        setPokemonData(currentData);
-        setError(null);
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`)
+        .then(data => {
+          if (!data.ok) {
+            throw new Error("data not found");
+          }
+          return data.json();
+        })
+        .then((result) => {
+          setPokemonData(result);
+        })
+        .catch(err =>{ 
+          console.log(err);
+        });
       }
       catch(error){
         console.log(error);
-        setError(error);
       }
     }
 
     return (
       <div>
         <form>
-          <span> Enter a pokemon name</span>
-          <input type="text" value={pokemonName} onChange={handleSearchOnChange} />
-          <button type="submit" onClick={handleSearch}>Search</button>
+          <span > Enter a pokemon name</span>
+          <input className={styles.inputPokemon}type="text" value={pokemonName} placeholder='search...' name={"searchPokemon"} onChange={handleSearchOnChange} />
+          <button className={styles.searchBtn} type="submit" onClick={handleSearch}>Search</button>
         </form>
         {pokemonData && (
           <div>
-            <h2>{pokemonData.name}</h2>
+            <h2>{pokemonData?.name}</h2>
+            <img src={`${pokemonData?.sprites?.front_default}`} alt="sprites" />
+
+            {pokemonData?.stats?.map((el)=> (
+              <div key={el?.stat?.name}>{`${el?.stat.name } : ${el?.base_stat}`}</div>
+            ))}
           </div>
         )}
         {error && (
@@ -43,6 +57,7 @@ const FetchData = () => {
           </div>
         )}
       </div>
+      
     );
   }
 

@@ -1,0 +1,51 @@
+.root{
+    margin: 0px;
+    background: #fffdf4;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 16px);
+}
+.landingContainer{
+    flex-grow: 1;
+}
+.landingContent{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    color: #fc6262;
+    font-size: 40px;
+}
+
+.description{
+    color: #277f21;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.inputPokemon{
+    border: solid  #fc6262 1px;
+    border-radius: 8px;
+    margin: 0 9px;
+}
+
+.inputPokemon:focus{
+    outline: none;
+}
+
+.searchBtn{
+    background-color: #fc6262;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 9px;
+}

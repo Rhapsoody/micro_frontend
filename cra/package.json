@@ -5,7 +5,8 @@
   "workspaces": [
     "./host",
     "./remote",
-    "./sharedComponent"
+    "./sharedComponent",
+    "./uploadPDF"
   ],
   "scripts": {
     "start": "pnpm --filter cra_* start",
