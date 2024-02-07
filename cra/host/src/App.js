@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../../sharedComponent/src/header'
+import FetchData from './components/pokemonData';
 
+ 
 const RemoteButton = React.lazy(() => import('remote/Button'));
 
 const App = () => {
@@ -15,6 +17,9 @@ const App = () => {
     <React.Suspense fallback="Loading Button">
       <RemoteButton />
     </React.Suspense>
+
+    <h2>Pokemon Data on landing Page</h2>
+    <FetchData />
   </div>
   
   )

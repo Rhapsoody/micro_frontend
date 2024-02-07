@@ -1,6 +1,6 @@
 import LocalButton from './Button';
 import Header from '../../sharedComponent/src/header'
-import Card from './compenents/card'
+import Card from './components/card'
 
 const App = () => (
   <div>
